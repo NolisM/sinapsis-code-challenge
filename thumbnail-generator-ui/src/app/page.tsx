@@ -1,7 +1,8 @@
 'use client';
 import { useUser } from "@auth0/nextjs-auth0/client";
-import { LoginButton, LoginContainer } from "../style/login";
-import { Title } from "@/style/title";
+import { LoginContainer } from "../style/login";
+
+import { LoginLogout } from "@/components/login-logout";
 
 
 export default function Login() {
@@ -9,8 +10,8 @@ export default function Login() {
 
   return (
     <LoginContainer>
-      <Title>Welcome to the Thumbnail Generator</Title>
-      <LoginButton href="/api/auth/login">Login</LoginButton>;
+
+      <LoginLogout />
     </LoginContainer>
   )
 }
