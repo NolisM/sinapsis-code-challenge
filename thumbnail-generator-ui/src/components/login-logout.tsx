@@ -1,8 +1,9 @@
 import React from "react";
 import { useUser } from "@auth0/nextjs-auth0/client";
-import { LoginButton } from "@/style/login";
+import { LoginButton, LogoutButton } from "@/style/login";
 import { Loader } from "@/style/loader";
 import { Title } from "@/style/title";
+import Generator from "./generator";
 
 export const LoginLogout = () => {
   const { user, error, isLoading } = useUser()
@@ -20,7 +21,10 @@ export const LoginLogout = () => {
       )
         :
         (
-          <LoginButton href="/api/auth/logout">Logout</LoginButton>
+          <>
+            <LogoutButton href="/api/auth/logout">Logout</LogoutButton>
+            <Generator />
+          </>
         )
       }
 
