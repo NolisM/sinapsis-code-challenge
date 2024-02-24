@@ -31,7 +31,7 @@ border 1px solid;
 border-radius: 5px;
 text-align:center;
 color:white;
-margin:20px;
+margin:0;
 display: flex;
 justify-content: center;
 align-items: center;

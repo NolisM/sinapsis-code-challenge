@@ -15,7 +15,7 @@ export const LoginLogout = () => {
     <>
       {!user ? (
         <>
-          <Title>Welcome to the Thumbnail Generator</Title>
+          <Title>Bienvenido al Generador de miniaturas</Title>
           <LoginButton href="/api/auth/login">Login</LoginButton>
         </>
       )

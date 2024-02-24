@@ -8,13 +8,14 @@ const Generator: React.FC = () => {
   const [thumbnailUrl2, setThumbnailUrl2] = useState<string>('');
   const [thumbnailUrl3, setThumbnailUrl3] = useState<string>('');
   const [onLoad, setOnLoad] = useState<boolean>(false)
+  const [dragging, setDragging] = useState<boolean>(false);
 
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const handleChange = async () => {
-    if (!inputRef.current?.files) return;
+  const handleChange = async (files: FileList | null) => {
+    if (!files || !files[0]) return;
     setOnLoad(true)
-    const file = inputRef.current.files[0];
+    const file = files[0];
     const reader = new FileReader();
 
     reader.onload = async (e) => {
@@ -59,31 +60,62 @@ const Generator: React.FC = () => {
     link.click();
   };
 
+  const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    setDragging(true);
+  };
+
+  const handleDragEnter = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    setDragging(true);
+  };
+
+  const handleDragLeave = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    setDragging(false);
+  };
+
+  const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    setDragging(false);
+    const files = e.dataTransfer.files;
+    handleChange(files);
+  };
+
+
   return (
     <ContainerGenerator>
       <Title>Selecciona tu imagen y obtendras 3 diferentes tamaños</Title>
-
-      <InputFile type="file" ref={inputRef} onChange={handleChange} />
+      <InputArea
+        onDragOver={handleDragOver}
+        onDragEnter={handleDragEnter}
+        onDragLeave={handleDragLeave}
+        onDrop={handleDrop}
+        dragging={dragging}
+      >
+        <InputFile type="file" ref={inputRef} onChange={(e) => handleChange(e.target.files)} />
+        <TextP>O arrastra y suelta aquí tu archivo</TextP>
+      </InputArea>
 
       {onLoad === true ? (
         <ContainerThumbnails>
           <Thumbnail>
-            <ImageNext src={thumbnailUrl1} width={400} height={300} alt='image.png' />
-            <Resolucion> Resolucion de la imagen 400 x 300</Resolucion>
-            <button onClick={() => downloadImage(thumbnailUrl1)}>Descargar Miniatura 1</button>
+            <ImageNext src={thumbnailUrl1} width={400} height={300} alt='image.png' layout="responsive" />
+            <TextP> Resolucion de la imagen 400 x 300</TextP>
+            <ButtonDownloadImage onClick={() => downloadImage(thumbnailUrl1)}>Descargar Miniatura 1</ButtonDownloadImage>
 
           </Thumbnail>
           <Thumbnail>
 
             <ImageNext src={thumbnailUrl2} width={160} height={120} alt='image.png' />
-            <Resolucion> Resolucion de la imagen 160 x 120</Resolucion>
-            <button onClick={() => downloadImage(thumbnailUrl2)}>Descargar Miniatura 2</button>
+            <TextP> Resolucion de la imagen 160 x 120</TextP>
+            <ButtonDownloadImage onClick={() => downloadImage(thumbnailUrl2)}>Descargar Miniatura 2</ButtonDownloadImage>
           </Thumbnail>
           <Thumbnail>
 
             <ImageNext src={thumbnailUrl3} width={120} height={120} alt='image.png' />
-            <Resolucion> Resolucion de la imagen 120 x 120</Resolucion>
-            <button onClick={() => downloadImage(thumbnailUrl3)}>Descargar Miniatura 3</button>
+            <TextP> Resolucion de la imagen 120 x 120</TextP>
+            <ButtonDownloadImage onClick={() => downloadImage(thumbnailUrl3)}>Descargar Miniatura 3</ButtonDownloadImage>
           </Thumbnail>
         </ContainerThumbnails>
       ) : <></>
@@ -103,24 +135,30 @@ background:#dbb6ee;
 whitdh:100%;
 min-height: 100vh;
 display:flex;
-justify-content: center;
 align-items: center;
 flex-direction: column;
-margin:0%;
 }
 `
+const InputArea = styled.div<{ dragging: boolean }>`
+  border: 2px dashed ${props => (props.dragging ? 'indigo' : 'gray')};
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  background:#7051c8;
+`;
+
 const InputFile = styled.input`
 display:flex;
 justify-content: center;
 align-items: center;
 padding: 10px;
 border-radius: 50px;
-background: indigo;
+background:#7051c8;
 color: white;
 font-size: 1rem;
 
 @media screen and (max-width: 768px) {
-  font-size: 0.5rem;
+  font-size: 0.8rem;
 }
 `
 const Title = styled.h1`
@@ -131,22 +169,25 @@ font-size: 2rem;
 
 
 @media screen and (max-width: 768px) {
-  font-size: 1rem;
+  font-size: 1.5rem;
 }
 `
 const ContainerThumbnails = styled.div`
 display: flex;
 justify-content: space-between;
 flex-direction: row;
-margin: 2%;
+margin: 2% auto;
 border-radius: 2%;
 padding: 2%;
 
 
 @media screen and (max-width: 1024px) {
   flex-direction: column;
-  margin-left: 5%;
-  margin-right: 5%;
+  margin: 2% 5%; 
+}
+
+@media screen and (max-width: 768px) {
+  margin: 0; 
 }
 `
 const Thumbnail = styled.div`
@@ -162,26 +203,27 @@ height: fit-content;
 width: fit-content;
 
 @media screen and (max-width: 768px) {
-  margin-left: 5%;
-  margin-right: 5%;
+  margin: 2%;
+  width: 80%;
 }
 
 `
-const Resolucion = styled.p`
+const TextP = styled.p`
 color: white;
 font-size: 1rem;
 
 @media screen and (max-width: 768px) {
-  font-size: 0.5rem;
+  font-size: 0.8rem;
 }
 `
 
 const ButtonDownloadImage = styled.button`
   border-radius: 2%;
-  color: white;
+  color: indigo;
   font-size: 1rem;
+  width: max-content;
 
   @media screen and (max-width: 768px) {
-    font-size: 0.5rem;
+    font-size: 0.8rem;
 }
 `
