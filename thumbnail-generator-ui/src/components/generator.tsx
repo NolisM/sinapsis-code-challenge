@@ -9,6 +9,7 @@ const Generator: React.FC = () => {
   const [thumbnailUrl3, setThumbnailUrl3] = useState<string>('');
   const [onLoad, setOnLoad] = useState<boolean>(false)
   const [dragging, setDragging] = useState<boolean>(false);
+  const [previewUrl, setPreviewUrl] = useState<string>('');
 
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -20,6 +21,8 @@ const Generator: React.FC = () => {
 
     reader.onload = async (e) => {
       if (!e.target?.result) return;
+      const imageUrl = e.target.result as string;
+      setPreviewUrl(imageUrl);
       const image = new Image();
       image.src = e.target.result as string;
 
@@ -86,58 +89,69 @@ const Generator: React.FC = () => {
   return (
     <ContainerGenerator>
       <Title>Selecciona tu imagen y obtendras 3 diferentes tamaños</Title>
-      <InputArea
-        data-testid='input-area'
-        onDragOver={handleDragOver}
-        onDragEnter={handleDragEnter}
-        onDragLeave={handleDragLeave}
-        onDrop={handleDrop}
-        dragging={dragging.toString()}
-      >
-        <InputFile
-          type="file"
-          data-testid="input-file"
-          accept=".png, .jpg, .jpeg"
-          ref={inputRef}
-          onChange={(e) => handleChange(e.target.files)}
-        />
-        <TextP>O arrastra y suelta aquí tu archivo</TextP>
-      </InputArea>
+      <ContainerDiv>
+        <InputArea
+          data-testid='input-area'
+          onDragOver={handleDragOver}
+          onDragEnter={handleDragEnter}
+          onDragLeave={handleDragLeave}
+          onDrop={handleDrop}
+          dragging={dragging.toString()}
+          className='input-area'
+        >
 
-      {onLoad === true ? (
-        <ContainerThumbnails>
-          {thumbnailUrl1 && (
-            <Thumbnail>
-              <ImageNext src={thumbnailUrl1} width={400} height={300} alt="image1.png" layout="responsive" />
-              <TextP> Resolucion de la imagen 400 x 300</TextP>
-              <ButtonDownloadImage onClick={() => downloadImage(thumbnailUrl1)}>Descargar Miniatura 1</ButtonDownloadImage>
+          <InputFile
+            type="file"
+            data-testid="input-file"
+            accept=".png, .jpg, .jpeg"
+            ref={inputRef}
+            onChange={(e) => handleChange(e.target.files)}
+          />
+          <TextP>O arrastra y suelta aquí tu archivo</TextP>
+        </InputArea>
+        {previewUrl && (
+          <UrlDiv>
+            <TextImage> Imagen Original</TextImage>
+            <PreviewImage src={previewUrl} alt="Preview" />
+          </UrlDiv>
+        )}
+      </ContainerDiv>
 
-            </Thumbnail>
-          )}
-          {thumbnailUrl2 && (
-            <Thumbnail>
+      {
+        onLoad === true ? (
+          <ContainerThumbnails>
+            {thumbnailUrl1 && (
+              <Thumbnail>
+                <ImageNext src={thumbnailUrl1} width={400} height={300} alt="image1.png" layout="responsive" />
+                <TextP> Resolucion de la imagen 400 x 300</TextP>
+                <ButtonDownloadImage onClick={() => downloadImage(thumbnailUrl1)}>Descargar Miniatura 1</ButtonDownloadImage>
 
-              <ImageNext src={thumbnailUrl2} width={160} height={120} alt="image2.png" />
-              <TextP> Resolucion de la imagen 160 x 120</TextP>
-              <ButtonDownloadImage onClick={() => downloadImage(thumbnailUrl2)}>Descargar Miniatura 2</ButtonDownloadImage>
-            </Thumbnail>
-          )}
-          {thumbnailUrl3 && (
-            <Thumbnail>
+              </Thumbnail>
+            )}
+            {thumbnailUrl2 && (
+              <Thumbnail>
 
-              <ImageNext src={thumbnailUrl3} width={120} height={120} alt="image3.png" />
-              <TextP> Resolucion de la imagen 120 x 120</TextP>
-              <ButtonDownloadImage onClick={() => downloadImage(thumbnailUrl3)}>Descargar Miniatura 3</ButtonDownloadImage>
-            </Thumbnail>
-          )}
-        </ContainerThumbnails>
-      ) : <></>
+                <ImageNext src={thumbnailUrl2} width={160} height={120} alt="image2.png" />
+                <TextP> Resolucion de la imagen 160 x 120</TextP>
+                <ButtonDownloadImage onClick={() => downloadImage(thumbnailUrl2)}>Descargar Miniatura 2</ButtonDownloadImage>
+              </Thumbnail>
+            )}
+            {thumbnailUrl3 && (
+              <Thumbnail>
+
+                <ImageNext src={thumbnailUrl3} width={120} height={120} alt="image3.png" />
+                <TextP> Resolucion de la imagen 120 x 120</TextP>
+                <ButtonDownloadImage onClick={() => downloadImage(thumbnailUrl3)}>Descargar Miniatura 3</ButtonDownloadImage>
+              </Thumbnail>
+            )}
+          </ContainerThumbnails>
+        ) : <></>
 
       }
 
 
 
-    </ContainerGenerator>
+    </ContainerGenerator >
   );
 };
 
@@ -152,6 +166,35 @@ align-items: center;
 flex-direction: column;
 }
 `
+const ContainerDiv = styled.div`
+display:flex;
+flex-direction: row;
+justify-content: space-between;
+`
+const UrlDiv = styled.div`
+width: 100%;
+height: 100%;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+`
+
+const TextImage = styled.h3`
+margin-top: 1%;
+color: indigo;
+font-size: 1.5rem;
+
+@media screen and (max-width: 768px) {
+  font-size: 1rem;
+}
+`
+const PreviewImage = styled.img`
+width: 35%;
+height: 20%;
+border-radius: 5%;
+border: 5px solid indigo;
+`;
 
 const InputArea = styled.div<{ dragging?: string }>`
   border: 2px dashed ${props => (props.dragging === 'true' ? 'indigo' : 'gray')};
@@ -165,7 +208,7 @@ const InputFile = styled.input`
 display:flex;
 justify-content: center;
 align-items: center;
-padding: 10px;
+padding: 8px;
 border-radius: 50px;
 background:#7051c8;
 color: white;
@@ -177,8 +220,8 @@ font-size: 1rem;
 `
 const Title = styled.h1`
 color:indigo;
-margin-bottom: 5%;
-margin-top:2%;
+margin-bottom: 2%;
+margin-top:0%;
 font-size: 2rem;
 
 
@@ -190,7 +233,7 @@ const ContainerThumbnails = styled.div`
 display: flex;
 justify-content: space-between;
 flex-direction: row;
-margin: 2% auto;
+margin: 1% auto;
 border-radius: 2%;
 padding: 2%;
 
@@ -207,14 +250,14 @@ padding: 2%;
 const Thumbnail = styled.div`
 background: indigo;
 padding: 2%;
-margin: 5%;
+margin: 3%;
 display: flex;
 flex-direction: column;
 align-items: center;
 justify-content: center;
 border-radius: 2%;
-height: fit-content;
-width: fit-content;
+height: auto;
+width: auto;
 
 @media screen and (max-width: 768px) {
   margin: 2%;

@@ -33,7 +33,7 @@ describe('Generator Component', () => {
 
     const inputArea = screen.getByTestId('input-area');
     fireEvent.dragEnter(inputArea);
-    expect(inputArea.className).toContain('sc-guDLey');
+    expect(inputArea.className).toContain('input-area');
   });
 
   test('La descarga de miniaturas debe funcionar correctamente', () => {
