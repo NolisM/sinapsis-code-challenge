@@ -10,7 +10,6 @@ export default function Login() {
 
   return (
     <LoginContainer>
-
       <LoginLogout />
     </LoginContainer>
   )

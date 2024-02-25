@@ -87,36 +87,49 @@ const Generator: React.FC = () => {
     <ContainerGenerator>
       <Title>Selecciona tu imagen y obtendras 3 diferentes tamaños</Title>
       <InputArea
+        data-testid='input-area'
         onDragOver={handleDragOver}
         onDragEnter={handleDragEnter}
         onDragLeave={handleDragLeave}
         onDrop={handleDrop}
-        dragging={dragging}
+        dragging={dragging.toString()}
       >
-        <InputFile type="file" ref={inputRef} onChange={(e) => handleChange(e.target.files)} />
+        <InputFile
+          type="file"
+          data-testid="input-file"
+          accept=".png, .jpg, .jpeg"
+          ref={inputRef}
+          onChange={(e) => handleChange(e.target.files)}
+        />
         <TextP>O arrastra y suelta aquí tu archivo</TextP>
       </InputArea>
 
       {onLoad === true ? (
         <ContainerThumbnails>
-          <Thumbnail>
-            <ImageNext src={thumbnailUrl1} width={400} height={300} alt='image.png' layout="responsive" />
-            <TextP> Resolucion de la imagen 400 x 300</TextP>
-            <ButtonDownloadImage onClick={() => downloadImage(thumbnailUrl1)}>Descargar Miniatura 1</ButtonDownloadImage>
+          {thumbnailUrl1 && (
+            <Thumbnail>
+              <ImageNext src={thumbnailUrl1} width={400} height={300} alt="image1.png" layout="responsive" />
+              <TextP> Resolucion de la imagen 400 x 300</TextP>
+              <ButtonDownloadImage onClick={() => downloadImage(thumbnailUrl1)}>Descargar Miniatura 1</ButtonDownloadImage>
 
-          </Thumbnail>
-          <Thumbnail>
+            </Thumbnail>
+          )}
+          {thumbnailUrl2 && (
+            <Thumbnail>
 
-            <ImageNext src={thumbnailUrl2} width={160} height={120} alt='image.png' />
-            <TextP> Resolucion de la imagen 160 x 120</TextP>
-            <ButtonDownloadImage onClick={() => downloadImage(thumbnailUrl2)}>Descargar Miniatura 2</ButtonDownloadImage>
-          </Thumbnail>
-          <Thumbnail>
+              <ImageNext src={thumbnailUrl2} width={160} height={120} alt="image2.png" />
+              <TextP> Resolucion de la imagen 160 x 120</TextP>
+              <ButtonDownloadImage onClick={() => downloadImage(thumbnailUrl2)}>Descargar Miniatura 2</ButtonDownloadImage>
+            </Thumbnail>
+          )}
+          {thumbnailUrl3 && (
+            <Thumbnail>
 
-            <ImageNext src={thumbnailUrl3} width={120} height={120} alt='image.png' />
-            <TextP> Resolucion de la imagen 120 x 120</TextP>
-            <ButtonDownloadImage onClick={() => downloadImage(thumbnailUrl3)}>Descargar Miniatura 3</ButtonDownloadImage>
-          </Thumbnail>
+              <ImageNext src={thumbnailUrl3} width={120} height={120} alt="image3.png" />
+              <TextP> Resolucion de la imagen 120 x 120</TextP>
+              <ButtonDownloadImage onClick={() => downloadImage(thumbnailUrl3)}>Descargar Miniatura 3</ButtonDownloadImage>
+            </Thumbnail>
+          )}
         </ContainerThumbnails>
       ) : <></>
 
@@ -139,8 +152,9 @@ align-items: center;
 flex-direction: column;
 }
 `
-const InputArea = styled.div<{ dragging: boolean }>`
-  border: 2px dashed ${props => (props.dragging ? 'indigo' : 'gray')};
+
+const InputArea = styled.div<{ dragging?: string }>`
+  border: 2px dashed ${props => (props.dragging === 'true' ? 'indigo' : 'gray')};
   padding: 20px;
   text-align: center;
   cursor: pointer;

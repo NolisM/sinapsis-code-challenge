@@ -1,8 +1,8 @@
 import React from "react";
 import { useUser } from "@auth0/nextjs-auth0/client";
-import { LoginButton, LogoutButton } from "@/style/login";
-import { Loader } from "@/style/loader";
-import { Title } from "@/style/title";
+import { LoginButton, LogoutButton } from "../style/login";
+import { Loader } from "../style/loader";
+import { Title } from "../style/title";
 import Generator from "./generator";
 
 export const LoginLogout = () => {
@@ -15,7 +15,7 @@ export const LoginLogout = () => {
     <>
       {!user ? (
         <>
-          <Title>Bienvenido al Generador de miniaturas</Title>
+          <Title data-testid="title" >Bienvenido al Generador de miniaturas</Title>
           <LoginButton href="/api/auth/login">Login</LoginButton>
         </>
       )
