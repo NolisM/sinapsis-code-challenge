@@ -209,6 +209,12 @@ const InputArea = styled.div<{ dragging?: string }>`
   text-align: center;
   cursor: pointer;
   background:#7051c8;
+
+@media screen and (max-width: 768px) {
+    padding: 0;
+      margin: 2%;
+    
+    }
 `;
 
 const InputFile = styled.input`
@@ -223,6 +229,8 @@ font-size: 1rem;
 
 @media screen and (max-width: 768px) {
   font-size: 0.8rem;
+  padding: 1%;
+  width: -webkit-fill-available;
 }
 `
 const Title = styled.h1`
@@ -233,7 +241,8 @@ font-size: 2rem;
 
 
 @media screen and (max-width: 768px) {
-  font-size: 1.5rem;
+  font-size: 1rem;
+  margin-top: 2%;
 }
 `
 const ContainerThumbnails = styled.div`
