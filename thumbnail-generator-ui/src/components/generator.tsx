@@ -170,6 +170,13 @@ const ContainerDiv = styled.div`
 display:flex;
 flex-direction: row;
 justify-content: space-between;
+
+@media screen and (max-width: 1024px) {
+  flex-direction: column;
+  margin: 2% 5%; 
+}
+
+
 `
 const UrlDiv = styled.div`
 width: 100%;

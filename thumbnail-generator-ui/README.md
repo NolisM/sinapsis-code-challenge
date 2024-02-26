@@ -104,3 +104,7 @@ Debe permitir solo imágenes PNG y JPEG: Verifica que solo se permitan cargar im
 Debe mostrar el área de carga de archivos: Verifica que el área de carga de archivos esté presente en la interfaz.
 El estado de "dragging" debe cambiar al arrastrar archivos: Verifica que el estado "dragging" cambie cuando se arrastren archivos sobre el área de carga de archivos.
 La descarga de miniaturas debe funcionar correctamente: Verifica que la descarga de miniaturas funcione correctamente después de cargar una imagen.
+
+## link deploy 
+
+https://sinapsis-code-challenge-u71d.vercel.app

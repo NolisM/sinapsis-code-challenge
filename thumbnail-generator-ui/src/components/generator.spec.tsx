@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom';
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import Generator from './generator';
 
 
@@ -11,7 +11,7 @@ describe('Generator Component', () => {
     expect(message).toBeInTheDocument();
   });
 
-  test('Solo imágenes PNG y JPEG', () => {
+  test('En la carga de imagenes solo imágenes PNG y JPEG', () => {
     const { getByTestId } = render(<Generator />);
     const input = getByTestId('input-file');
 
