@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import fondo from "../image/fondo.png"
 
 export const LoginButton = styled.a`
 background:#d17283;
@@ -13,7 +14,10 @@ margin:20px;
 `
 
 export const LoginContainer = styled.div`
-background:white;
+background-image: url(${fondo.src});
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
 whitdh:100%;
 min-height: 100vh;
 padding: 2%;
