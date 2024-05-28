@@ -10,10 +10,6 @@ border-radius: 5px;
 text-align:center;
 color:white;
 margin:20px;
-position: absolute; 
-top: 50%;
-left: 50%;
-transform: translate(-50%, -50%);
 `
 
 export const LoginContainer = styled.div`

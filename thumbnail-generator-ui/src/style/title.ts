@@ -2,12 +2,8 @@ import styled from "styled-components";
 
 export const Title = styled.h1`
 color:#f03355;
-position: absolute; 
-top: 40%; 
-left: 50%; 
-transform: translate(-50%, -50%);
 margin: 0; 
-font-size: 2rem;
+font-size: 2.5rem;
 
 
 @media screen and (max-width: 1024px) {
