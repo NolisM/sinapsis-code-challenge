@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const LoginButton = styled.a`
-background:indigo;
+background:#d17283;
 cursor:pointer;
 font-size:20px;
 padding: 15px 20px ;
@@ -17,13 +17,13 @@ transform: translate(-50%, -50%);
 `
 
 export const LoginContainer = styled.div`
-background:#dbb6ee;
+background:white;
 whitdh:100%;
 min-height: 100vh;
 padding: 2%;
 `
 export const LogoutButton = styled.a`
-background:indigo;
+background:#d17283;
 cursor:pointer;
 font-size:20px;
 padding: 15px 20px ;

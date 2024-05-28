@@ -1,42 +1,21 @@
 import styled from "styled-components";
 
+
 export const Loader = styled.div`
-border-width: 0.5rem;
-border-style: solid;
-border-color: purple purple purple purple;
-width: 3.625rem;
-height: 3.625rem;
-border-radius: 50%;
--webkit-animation: spin 1s infinite;
-animation: spin 1s infinite;
-animation-delay: -0.10s;
 position: absolute; 
-top: 50%;
-left: 50%;
-transform: translate(-50%, -50%);
-
-&:before,
-&:after {
-  content: "";
-  width: 0.5rem;
-  height: 0.5rem;
+top: 40%;
+left: 40%;
+  width: 10%;
+  --b: 8px; 
+  aspect-ratio: 1;
   border-radius: 50%;
-  background: purple;
-  position: absolute;
-  left: 0.125rem;
+  padding: 1px;
+  background: conic-gradient(#0000 10%,#f03355) content-box;
+  -webkit-mask:
+    repeating-conic-gradient(#0000 0deg,#000 1deg 20deg,#0000 21deg 36deg),
+    radial-gradient(farthest-side,#0000 calc(100% - var(--b) - 1px),#000 calc(100% - var(--b)));
+  -webkit-mask-composite: destination-in;
+          mask-composite: intersect;
+  animation:l4 1s infinite steps(10);
 }
-
-&:before {
-  top: 0.063rem;
-}
-
-&:after {
-  bottom: 0.063rem;
-}
-
-@keyframes spin {
-  100% {
-    transform: rotate(360deg);
-  }
-}
-`;
+@keyframes l4 {to{transform: rotate(1turn)}`;

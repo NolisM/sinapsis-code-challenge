@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Title = styled.h1`
-color:indigo;
+color:#f03355;
 position: absolute; 
 top: 40%; 
 left: 50%; 
