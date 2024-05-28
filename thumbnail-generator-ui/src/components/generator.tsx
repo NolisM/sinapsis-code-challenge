@@ -208,7 +208,7 @@ const InputArea = styled.div<{ dragging?: string }>`
   padding: 20px;
   text-align: center;
   cursor: pointer;
-  background:#7051c8;
+  background:#d17283;
 
 @media screen and (max-width: 768px) {
     padding: 0;
@@ -223,7 +223,6 @@ justify-content: center;
 align-items: center;
 padding: 8px;
 border-radius: 50px;
-background:#7051c8;
 color: white;
 font-size: 1rem;
 
@@ -264,7 +263,7 @@ padding: 2%;
 }
 `
 const Thumbnail = styled.div`
-background: #f03355;
+background: #d17283;
 padding: 2%;
 margin: 3%;
 display: flex;
