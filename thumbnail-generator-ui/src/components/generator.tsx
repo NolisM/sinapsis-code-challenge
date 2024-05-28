@@ -158,7 +158,7 @@ const Generator: React.FC = () => {
 export default Generator;
 
 const ContainerGenerator = styled.div`
-background:#dbb6ee;
+background:white;
 whitdh:100%;
 min-height: 100vh;
 display:flex;
@@ -189,7 +189,7 @@ align-items: center;
 
 const TextImage = styled.h3`
 margin-top: 1%;
-color: indigo;
+color: #d17283;
 font-size: 1.5rem;
 
 @media screen and (max-width: 768px) {
@@ -200,11 +200,11 @@ const PreviewImage = styled.img`
 width: 35%;
 height: 20%;
 border-radius: 5%;
-border: 5px solid indigo;
+border: 5px solid #d17283;
 `;
 
 const InputArea = styled.div<{ dragging?: string }>`
-  border: 2px dashed ${props => (props.dragging === 'true' ? 'indigo' : 'gray')};
+  border: 2px dashed ${props => (props.dragging === 'true' ? '#d17283' : 'gray')};
   padding: 20px;
   text-align: center;
   cursor: pointer;
@@ -234,7 +234,7 @@ font-size: 1rem;
 }
 `
 const Title = styled.h1`
-color:indigo;
+color:#f03355;
 margin-bottom: 2%;
 margin-top:0%;
 font-size: 2rem;
@@ -264,7 +264,7 @@ padding: 2%;
 }
 `
 const Thumbnail = styled.div`
-background: indigo;
+background: #f03355;
 padding: 2%;
 margin: 3%;
 display: flex;
@@ -292,7 +292,7 @@ font-size: 1rem;
 
 const ButtonDownloadImage = styled.button`
   border-radius: 2%;
-  color: indigo;
+  color: #f03355;
   font-size: 1rem;
   width: max-content;
 
