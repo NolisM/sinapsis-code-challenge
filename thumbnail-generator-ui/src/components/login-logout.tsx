@@ -24,21 +24,19 @@ export const LoginLogout = () => {
 
           <Title data-testid="title">Bienvenido a nuestro generador de miniaturas</Title>
           <TextP>Carga tu imagen y genera tres miniaturas diferentes en segundos. Fácil y rápido.</TextP>
-          <H2>Imagen original</H2>
-          <PreviewImage src={original.src} alt="Preview" />
+
           <ContainerDiv>
+            <H2>Imagen original</H2>
+            <PreviewImage src={original.src} alt="Preview" />
             <H2>Ejemplos de Miniaturas</H2>
             <ContainerThumbnails>
-              <Thumbnail>
-                <ImageNext src={miniaturaEjemplo1} width={400} height={300} alt="image1.png" layout="responsive" />
 
-              </Thumbnail>
-              <Thumbnail>
-                <ImageNext src={miniaturaEjemplo2} width={16} height={12} alt="image2.png" layout="responsive" />
-              </Thumbnail>
-              <Thumbnail>
-                <ImageNext src={miniaturaEjemplo3} width={120} height={120} alt="image3.png" layout="responsive" />
-              </Thumbnail>
+              <ImagNext src={miniaturaEjemplo1.src} alt="image1.png" width={400} height={300} />
+
+              <ImagNext src={miniaturaEjemplo2.src} alt="image2.png" width={160} height={120} />
+
+              <ImagNext src={miniaturaEjemplo3.src} alt="image3.png" width={120} height={120} />
+
             </ContainerThumbnails>
           </ContainerDiv>
           <div>
@@ -68,6 +66,14 @@ export const LoginLogout = () => {
   )
 }
 
+const ImagNext = styled.img`
+margin: 2%;
+border-radius: 5%;
+border: 5px solid #d17283;
+max-width: 100%; /* Asegura que las imágenes no sean más anchas que su contenedor */
+  height: auto;
+`
+
 const Container = styled.div`
 display:flex;
 justify-content: center;
@@ -78,6 +84,12 @@ const H2 = styled.h2`
 margin-top: 1%;
 color: #f03355;
 font-size: 1.5rem;
+text-shadow: 
+-1px -1px 0 #6b040d,  
+    1px -1px 0 #6b040d,
+    -1px 1px 0 #6b040d,
+    1px 1px 0 #6b040d;
+
 
 @media screen and (max-width: 768px) {
   font-size: 1rem;
@@ -87,18 +99,33 @@ const TextLoguin = styled.h2`
 margin-top:5%;
 color: #f03355;
 font-size: 1.5rem;
+text-shadow: 
+-1px -1px 0 #6b040d,  
+    1px -1px 0 #6b040d,
+    -1px 1px 0 #6b040d,
+    1px 1px 0 #6b040d;
 
 @media screen and (max-width: 768px) {
   font-size: 1rem;
 }
 `
 const TextP = styled.p`
-color:#d17283;
+color:#d3596f;
 font-size: 1.2rem;
+text-shadow: 
+-1px -1px 0 #6b040d,  
+    1px -1px 0 #6b040d,
+    -1px 1px 0 #6b040d,
+    1px 1px 0 #6b040d;
 `
 const TextLi = styled.li`
-color:#d17283;
+color:#d3596f;
 font-size: 1.2rem;
+text-shadow: 
+-1px -1px 0 #6b040d,  
+    1px -1px 0 #6b040d,
+    -1px 1px 0 #6b040d,
+    1px 1px 0 #6b040d;
 `
 const ContainerDiv = styled.div`
 display:flex;
@@ -109,8 +136,11 @@ margin-top: 5%;
 margin-bottom: 5%;
 `
 
+
 const ContainerThumbnails = styled.div`
 display: flex;
+flex-direction: column;
+width: 50%;
 margin: 1% auto;
 border-radius: 2%;
 
@@ -124,25 +154,9 @@ border-radius: 2%;
   margin: 0; 
 }
 `
-const Thumbnail = styled.div`
-background: #d17283;
-padding: 2%;
-margin: 3%;
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-border-radius: 2%;
-width: 50%;
 
-
-@media screen and (max-width: 768px) {
-  margin: 2%;
-  width: 50%;
-}
-
-`
 const PreviewImage = styled.img`
+
 width: 15%;
 height: 5%;
 border-radius: 5%;
