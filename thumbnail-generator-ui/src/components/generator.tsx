@@ -158,7 +158,6 @@ const Generator: React.FC = () => {
 export default Generator;
 
 const ContainerGenerator = styled.div`
-background:white;
 whitdh:100%;
 min-height: 100vh;
 display:flex;
