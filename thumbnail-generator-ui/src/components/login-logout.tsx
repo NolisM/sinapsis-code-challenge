@@ -49,14 +49,14 @@ export const LoginLogout = () => {
             </ul>
           </div>
           <TextLoguin>¡Inicia sesión ahora para empezar a crear tus miniaturas!</TextLoguin>
-          <LoginButton href="/api/auth/login">Login</LoginButton>
+          <LoginButton href="/api/auth/login">Ingresa</LoginButton>
 
         </Container>
       )
         :
         (
           <>
-            <LogoutButton href="/api/auth/logout">Logout</LogoutButton>
+            <LogoutButton href="/api/auth/logout">Salir</LogoutButton>
             <Generator />
           </>
         )
