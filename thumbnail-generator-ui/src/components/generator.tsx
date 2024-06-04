@@ -201,18 +201,25 @@ font-size: 1.5rem;
 }
 `
 const SubTitle = styled.h2`
-  font-size: 18px;
-  color: #555;
+  font-size: 25px;
+  margin-bottom: 5%;
+  color: #d3596f;
   text-align: center;
-  margin-bottom: 20px;
 
   strong {
-    color: #3b82f6;
+    color: #f03355;
   }
 
   span {
     font-size: 20px;
     margin-right: 5px;
+  }
+  @media screen and (max-width: 768px) {
+    font-size: 18px;
+    margin-top: 2%;
+    span {
+      font-size: 18px;
+    }
   }
 `;
 const PreviewImage = styled.img`
@@ -259,7 +266,7 @@ font-size: 2rem;
 
 
 @media screen and (max-width: 768px) {
-  font-size: 1rem;
+  font-size: 1.5rem;
   margin-top: 2%;
 }
 `
