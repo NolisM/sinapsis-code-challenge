@@ -91,8 +91,7 @@ const Generator: React.FC = () => {
       <Title>Selecciona tu imagen y obtendras 3 diferentes tamaños</Title>
       <SubTitle>
         <span role="img" aria-label="upload">⬆️</span>
-        Sube tu imagen y descarga en
-        <strong>3 tamaños diferentes</strong>: ¡elige el que más te guste!
+        Sube tu imagen y descarga en 3 tamaños diferentes : ¡elige el que más te guste!
       </SubTitle>
       <ContainerDiv>
         <InputArea
@@ -203,12 +202,8 @@ font-size: 1.5rem;
 const SubTitle = styled.h2`
   font-size: 25px;
   margin-bottom: 5%;
-  color: #d3596f;
+  color: #b12f46;
   text-align: center;
-
-  strong {
-    color: #f03355;
-  }
 
   span {
     font-size: 20px;
