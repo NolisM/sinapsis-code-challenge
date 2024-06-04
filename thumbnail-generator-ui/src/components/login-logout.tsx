@@ -125,6 +125,11 @@ text-shadow:
     1px -1px 0 #6b040d,
     -1px 1px 0 #6b040d,
     1px 1px 0 #6b040d;
+
+    @media screen and (max-width: 768px) {
+      text-align: center;
+
+    }
 `
 const TextLi = styled.li`
 color:#d3596f;
@@ -134,6 +139,7 @@ text-shadow:
     1px -1px 0 #6b040d,
     -1px 1px 0 #6b040d,
     1px 1px 0 #6b040d;
+   
 `
 const ContainerDiv = styled.div`
 display:flex;

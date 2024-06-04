@@ -13,5 +13,6 @@ text-shadow:
 
 @media screen and (max-width: 1024px) {
   font-size: 1.5rem;
+  text-align: center;
 }
 `
