@@ -30,13 +30,18 @@ export const LoginLogout = () => {
             <PreviewImage src={original.src} alt="Preview" />
             <H2>Ejemplos de Miniaturas</H2>
             <ContainerThumbnails>
-
-              <ImagNext src={miniaturaEjemplo1.src} alt="image1.png" width={400} height={300} />
-
-              <ImagNext src={miniaturaEjemplo2.src} alt="image2.png" width={160} height={120} />
-
-              <ImagNext src={miniaturaEjemplo3.src} alt="image3.png" width={120} height={120} />
-
+              <Thumbnail>
+                <ImagNext src={miniaturaEjemplo1.src} alt="image1.png" width={400} height={300} />
+                <TextP> Resolucion de la imagen 400 x 300</TextP>
+              </Thumbnail>
+              <Thumbnail>
+                <ImagNext src={miniaturaEjemplo2.src} alt="image2.png" width={160} height={120} />
+                <TextP> Resolucion de la imagen 160 x 120</TextP>
+              </Thumbnail>
+              <Thumbnail>
+                <ImagNext src={miniaturaEjemplo3.src} alt="image3.png" width={120} height={120} />
+                <TextP> Resolucion de la imagen 120 x 120</TextP>
+              </Thumbnail>
             </ContainerThumbnails>
           </ContainerDiv>
           <div>
@@ -72,6 +77,9 @@ border-radius: 5%;
 border: 5px solid #d17283;
 max-width: 100%; /* Asegura que las imágenes no sean más anchas que su contenedor */
   height: auto;
+  justify-content: center;
+    display: flex;
+    align-items: center;
 `
 
 const Container = styled.div`
@@ -132,15 +140,15 @@ display:flex;
 justify-content: center;
 flex-direction: column;
 align-items: center;
-margin-top: 5%;
-margin-bottom: 5%;
+margin-bottom: 2%;
 `
 
 
 const ContainerThumbnails = styled.div`
 display: flex;
-flex-direction: column;
-width: 50%;
+flex-direction: row;
+justify-content: center;
+    align-items: center;
 margin: 1% auto;
 border-radius: 2%;
 
@@ -153,6 +161,24 @@ border-radius: 2%;
 @media screen and (max-width: 768px) {
   margin: 0; 
 }
+`
+const Thumbnail = styled.div`
+background: #d17283;
+padding: 2%;
+margin: 3%;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+border-radius: 2%;
+height: auto;
+width: auto;
+
+@media screen and (max-width: 768px) {
+  margin: 2%;
+  width: 80%;
+}
+
 `
 
 const PreviewImage = styled.img`
