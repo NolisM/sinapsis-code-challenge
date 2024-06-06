@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const Title = styled.h1`
-color:#f03355;
+font-weight: bold;
+color:#403f3c;
 margin: 0; 
 font-size: 2.5rem;
 text-shadow: 

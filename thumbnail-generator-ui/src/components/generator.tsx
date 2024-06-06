@@ -2,6 +2,7 @@
 import React, { useRef, useState } from 'react';
 import ImageNext from 'next/image';
 import styled from 'styled-components';
+import { Title } from "../style/title";
 
 const Generator: React.FC = () => {
   const [thumbnailUrl1, setThumbnailUrl1] = useState<string>('');
@@ -192,7 +193,7 @@ align-items: center;
 
 const TextImage = styled.h3`
 margin-top: 1%;
-color: #d17283;
+color: #403f3c;
 font-size: 1.5rem;
 
 @media screen and (max-width: 768px) {
@@ -202,7 +203,7 @@ font-size: 1.5rem;
 const SubTitle = styled.h2`
   font-size: 25px;
   margin-bottom: 5%;
-  color: #b12f46;
+  color: #403f3c;
   text-align: center;
 
   span {
@@ -253,18 +254,18 @@ font-size: 1rem;
   width: -webkit-fill-available;
 }
 `
-const Title = styled.h1`
-color:#f03355;
-margin-bottom: 2%;
-margin-top:0%;
-font-size: 2rem;
+// const Title = styled.h1`
+// color:#403f3c;
+// margin-bottom: 2%;
+// margin-top:0%;
+// font-size: 2rem;
 
 
-@media screen and (max-width: 768px) {
-  font-size: 1.5rem;
-  margin-top: 2%;
-}
-`
+// @media screen and (max-width: 768px) {
+//   font-size: 1.5rem;
+//   margin-top: 2%;
+// }
+// `
 const ContainerThumbnails = styled.div`
 display: flex;
 justify-content: space-between;

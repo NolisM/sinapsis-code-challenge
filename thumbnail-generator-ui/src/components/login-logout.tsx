@@ -1,5 +1,5 @@
 import React from "react";
-import styled from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { LoginButton, LogoutButton } from "../style/login";
 import { Loader } from "../style/loader";
@@ -19,6 +19,7 @@ export const LoginLogout = () => {
 
   return (
     <>
+      <GlobalStyle />
       {!user ? (
         <Container>
 
@@ -71,11 +72,19 @@ export const LoginLogout = () => {
   )
 }
 
+const GlobalStyle = createGlobalStyle`
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+  body {
+    font-family: 'Poppins', sans-serif;
+  }
+`;
+
 const ImagNext = styled.img`
 margin: 2%;
 border-radius: 5%;
 border: 5px solid #d17283;
-max-width: 100%; /* Asegura que las imágenes no sean más anchas que su contenedor */
+max-width: 100%; 
   height: auto;
   justify-content: center;
     display: flex;
@@ -90,13 +99,8 @@ align-items: center;
 `
 const H2 = styled.h2`
 margin-top: 1%;
-color: #f03355;
+color: #403f3c;
 font-size: 1.5rem;
-text-shadow: 
--1px -1px 0 #6b040d,  
-    1px -1px 0 #6b040d,
-    -1px 1px 0 #6b040d,
-    1px 1px 0 #6b040d;
 
 
 @media screen and (max-width: 768px) {
@@ -105,41 +109,26 @@ text-shadow:
 `
 const TextLoguin = styled.h2`
 margin-top:5%;
-color: #f03355;
+color: #403f3c;
 font-size: 1.5rem;
-text-shadow: 
--1px -1px 0 #6b040d,  
-    1px -1px 0 #6b040d,
-    -1px 1px 0 #6b040d,
-    1px 1px 0 #6b040d;
+
 
 @media screen and (max-width: 768px) {
   font-size: 1rem;
 }
 `
 const TextP = styled.p`
-color:#d3596f;
+color:#403f3c;
+font-weight: 700;
 font-size: 1.2rem;
-text-shadow: 
--1px -1px 0 #6b040d,  
-    1px -1px 0 #6b040d,
-    -1px 1px 0 #6b040d,
-    1px 1px 0 #6b040d;
-
-    @media screen and (max-width: 768px) {
+@media screen and (max-width: 768px) {
       text-align: center;
 
     }
 `
 const TextLi = styled.li`
-color:#d3596f;
-font-size: 1.2rem;
-text-shadow: 
--1px -1px 0 #6b040d,  
-    1px -1px 0 #6b040d,
-    -1px 1px 0 #6b040d,
-    1px 1px 0 #6b040d;
-   
+color:#403f3c;
+font-size: 1.2rem;  
 `
 const ContainerDiv = styled.div`
 display:flex;

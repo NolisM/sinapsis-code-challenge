@@ -13,14 +13,14 @@ describe('Generator Component', () => {
 
   test('En la carga de imagenes solo imágenes PNG y JPEG', () => {
     const { getByTestId } = render(<Generator />);
-    const input = getByTestId('input-file');
+    const input = getByTestId('input-file') as HTMLInputElement;
 
     const file = new File(['dummy file content'], 'test.png', { type: 'image/png' });
 
     fireEvent.change(input, { target: { files: [file] } });
 
     expect(input.files).toHaveLength(1);
-    expect(input.files[0].name).toBe('test.png');
+    expect(input.files![0].name).toBe('test.png');
   });
 
   test('El área de carga de archivos debe estar presente', () => {
